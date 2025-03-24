@@ -41,7 +41,7 @@ PKG_BASE = os.path.dirname(__file__)
 
 etree.register_namespace("xlink", "http://www.w3.org/1999/xlink")
 
-LEGACY_KICAD = not isV6() and not isV7() and not isV8()
+LEGACY_KICAD = KICAD_VERSION[0] <= 5 and not isV6() # v6 includes version=(5,99)
 
 default_style = {
     "copper": "#417e5a",
@@ -1349,4 +1349,3 @@ class PcbPlotter():
         self._board_cont.attrib["id"] = "boardContainer"
         self._comp_cont.attrib["id"] = "componentContainer"
         self._high_cont.attrib["id"] = "highlightContainer"
-
